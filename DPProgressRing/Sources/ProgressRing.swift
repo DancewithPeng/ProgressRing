@@ -14,78 +14,108 @@ public class ProgressRing: UIView {
     // MARK: - Public Properties
     
     /// 最大值
-    public var maximum: Float = 1
+    @objc
+    public var maximum: Float = 1 { didSet { updateProgressAppearance() }}
     
     /// 最小值
-    public var minimum: Float = 0
+    @objc
+    public var minimum: Float = 0 { didSet { updateProgressAppearance() }}
     
     /// 进度
+    @objc
     public var progress: Float = 0 { didSet { updateProgressAppearance() }}
     
+    /// 是否顺时针
+    @objc
+    public var isClockwise: Bool = true { didSet { updateShapePath() }}
+    
     /// 环的宽度
-    public var width: CGFloat = 6
+    @objc
+    public var width: CGFloat = 6 {
+        didSet {
+            progressLayer.lineWidth     = width
+            placeholderLayer.lineWidth  = width
+        }
+    }
     
     /// 环的帽檐
-    public var cap: CAShapeLayerLineCap = .round
+    @objc
+    public var cap: CAShapeLayerLineCap = .round {
+        didSet {
+            progressLayer.lineCap    = cap
+            placeholderLayer.lineCap = cap
+        }
+    }
     
     /// 进度环的颜色
-    public var progressColor = UIColor(red: CGFloat(42.0/255.0), green: CGFloat(179.0/255.0), blue: CGFloat(196.0/255.0), alpha: 1.0)
+    @objc
+    public var progressColor = UIColor(red: CGFloat(80.0/255.0), green: CGFloat(132.0/255.0), blue: CGFloat(195.0/255.0), alpha: 1.0) {
+        didSet {
+            progressLayer.strokeColor = progressColor.cgColor
+        }
+    }
     
     /// 占位环的颜色
-    public var placeholderColor = UIColor(red: CGFloat(225.0/255.0), green: CGFloat(221.0/255.0), blue: CGFloat(221.0/255.0), alpha: 1.0)
+    @objc
+    public var placeholderColor = UIColor(red: CGFloat(218.0/255.0), green: CGFloat(225.0/255.0), blue: CGFloat(235.0/255.0), alpha: 1.0) {
+        didSet {
+            placeholderLayer.strokeColor = placeholderColor.cgColor
+        }
+    }
+    
+    /// 开始角度的偏移
+    @objc
+    public var startAngleOffset: CGFloat = 0 {
+        didSet {
+            updateShapePath()
+        }
+    }
         
     // MARK: - Private Properties
     
+    /// 是否启用更新进度的动画
+    private var isUpdateProgressAnimationEnable = false
+    
+    /// 进度环
     private lazy var progressLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.lineWidth   = self.width
         layer.lineCap     = self.cap
         layer.strokeColor = self.progressColor.cgColor
-        layer.backgroundColor = UIColor.red.cgColor
+        layer.fillColor   = nil
         return layer
     }()
     
+    /// 占位环
     private lazy var placeholderLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.lineWidth   = self.width
         layer.lineCap     = self.cap
         layer.strokeColor = self.placeholderColor.cgColor
+        layer.fillColor   = nil
         return layer
     }()
-    
-    // MARK: - KVO
-    
-    public override var bounds: CGRect {
-        didSet {
-            let squareLength = max(bounds.width, bounds.height)
-            let squareSize = CGSize(width: squareLength, height: squareLength)
-            let squareOrigin = CGPoint(x: (bounds.width-squareLength)/2.0, y: (bounds.height-squareLength)/2.0)
-            let square = CGRect(origin: squareOrigin, size: squareSize)
-            let path = CGPath(ellipseIn: square, transform: nil)
-            
-            placeholderLayer.path = path
-            placeholderLayer.bounds = bounds
-            
-            let progressScale = progress / (maximum - minimum)
-            progressLayer.path = UIBezierPath(arcCenter: center, radius: squareLength/2.0, startAngle: 0, endAngle: CGFloat.pi*2*CGFloat(progressScale), clockwise: true).cgPath
-            progressLayer.bounds = bounds
-        }
-    }
     
     // MARK: - Life Cycle Methods    
     
     public override func layoutSubviews() {
         super.layoutSubviews()
         
+        placeholderLayer.bounds = bounds
+        placeholderLayer.position = CGPoint(x: bounds.width/2.0, y: bounds.height/2.0)
+            
+        progressLayer.bounds = bounds
+        progressLayer.position = CGPoint(x: bounds.width/2.0, y: bounds.height/2.0)
+        
+        updateShapePath()
+        
         if placeholderLayer.superlayer != layer {
             layer.addSublayer(placeholderLayer)
         }
         
-        print(placeholderLayer)
-        
-//        if progressLayer.superlayer != layer {
-//            layer.addSublayer(progressLayer)
-//        }
+        if progressLayer.superlayer != layer {
+            layer.addSublayer(progressLayer)
+        }
     }
     
     // MARK: - Interface Methods
@@ -94,29 +124,50 @@ public class ProgressRing: UIView {
     /// - Parameters:
     ///   - progress: 进度值
     ///   - animated: 是否添加动画
+    @objc
     public func setProgress(_ progress: Float, animated: Bool) {
-        if animated {
-            UIView.animate(withDuration: 0.25) { [weak self] in
-                self?.progress = progress
-            }
-        } else {
-            self.progress = progress
-        }
+        isUpdateProgressAnimationEnable = animated
+        self.progress = progress
     }
 }
 
 // MARK: - Helper Methods
 extension ProgressRing {
     
-    /// 更新进度的外观
-    func updateProgressAppearance() {
-        let squareLength = max(bounds.width, bounds.height)
-        let progressScale = progress / (maximum - minimum)
-        progressLayer.path = UIBezierPath(arcCenter: center, radius: squareLength/2.0, startAngle: 0, endAngle: CGFloat.pi*2*CGFloat(progressScale), clockwise: true).cgPath
+    /// 正方形形状
+    var square: CGRect {
+        let length = max(bounds.width, bounds.height)
+        return CGRect(x: (bounds.width-length)/2.0, y: (bounds.height-length)/2.0, width: length, height: length)
     }
     
-    /// 更新占位符的外观
-    func updatePlaceholderAppearance() {
+    /// 进度百分比
+    var progressPercentage: CGFloat {
+        return CGFloat((progress-minimum)/(maximum-minimum))
+    }
+    
+    /// 更新图形的路径
+    func updateShapePath() {
         
+        let startAngle: CGFloat = -(CGFloat.pi/2) + startAngleOffset
+        let endAngle: CGFloat = isClockwise ? ((CGFloat.pi/2*3) + startAngleOffset) : (-(CGFloat.pi*2+CGFloat.pi/2) + startAngleOffset)
+        let ringPath = UIBezierPath(arcCenter: CGPoint(x: square.midX, y: square.midY), radius: square.width/2.0, startAngle: startAngle, endAngle: endAngle, clockwise: isClockwise)
+        
+        placeholderLayer.path = ringPath.cgPath
+        progressLayer.path    = ringPath.cgPath
+        
+        progressLayer.strokeEnd = progressPercentage
+    }
+    
+    /// 更新进度外观
+    func updateProgressAppearance() {
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(!isUpdateProgressAnimationEnable)
+        
+        progressLayer.strokeEnd = progressPercentage
+        
+        CATransaction.commit()
+        
+        isUpdateProgressAnimationEnable = false
     }
 }

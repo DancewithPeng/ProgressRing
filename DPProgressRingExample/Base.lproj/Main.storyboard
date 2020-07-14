@@ -35,6 +35,11 @@
                         <viewLayoutGuide key="safeArea" id="3IE-Z8-QiT"/>
                     </view>
                     <navigationItem key="navigationItem" id="RG5-af-RfS">
+                        <barButtonItem key="leftBarButtonItem" title="Random with Animation" id="VWb-ew-n5p">
+                            <connections>
+                                <action selector="animatedRandomButtonDidTap:" destination="sLl-Zm-84J" id="VhA-OL-ofz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Random" id="ktV-22-mYR">
                             <connections>
                                 <action selector="randomButtonDidTap:" destination="sLl-Zm-84J" id="ZHK-Cd-qx5"/>

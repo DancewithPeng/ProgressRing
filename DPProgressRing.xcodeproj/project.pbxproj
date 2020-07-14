@@ -16,10 +16,25 @@
 		6E49CFFD24BC924E007FD0E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E49CFFB24BC924E007FD0E5 /* LaunchScreen.storyboard */; };
 		6E49D00324BC92FB007FD0E5 /* DPProgressRing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E00828924BC7F3F0015792A /* DPProgressRing.framework */; };
 		6E49D00424BC92FB007FD0E5 /* DPProgressRing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E00828924BC7F3F0015792A /* DPProgressRing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6E971CAC24BD5D08005CCE14 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E971CAB24BD5D08005CCE14 /* AppDelegate.m */; };
+		6E971CB224BD5D08005CCE14 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E971CB124BD5D08005CCE14 /* ViewController.m */; };
+		6E971CB524BD5D08005CCE14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E971CB324BD5D08005CCE14 /* Main.storyboard */; };
+		6E971CB724BD5D0D005CCE14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E971CB624BD5D0D005CCE14 /* Assets.xcassets */; };
+		6E971CBA24BD5D0D005CCE14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E971CB824BD5D0D005CCE14 /* LaunchScreen.storyboard */; };
+		6E971CBD24BD5D0D005CCE14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E971CBC24BD5D0D005CCE14 /* main.m */; };
+		6E971CC124BD5E05005CCE14 /* DPProgressRing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E00828924BC7F3F0015792A /* DPProgressRing.framework */; };
+		6E971CC224BD5E05005CCE14 /* DPProgressRing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E00828924BC7F3F0015792A /* DPProgressRing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		6E49D00524BC92FB007FD0E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E00828024BC7F3F0015792A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E00828824BC7F3F0015792A;
+			remoteInfo = DPProgressRing;
+		};
+		6E971CC324BD5E05005CCE14 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6E00828024BC7F3F0015792A /* Project object */;
 			proxyType = 1;
@@ -40,6 +55,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E971CC524BD5E05005CCE14 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6E971CC224BD5E05005CCE14 /* DPProgressRing.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +80,16 @@
 		6E49CFF924BC924E007FD0E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E49CFFC24BC924E007FD0E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E49CFFE24BC924E007FD0E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E971CA824BD5D08005CCE14 /* DPProgressRingExample-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DPProgressRingExample-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E971CAA24BD5D08005CCE14 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6E971CAB24BD5D08005CCE14 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6E971CB024BD5D08005CCE14 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6E971CB124BD5D08005CCE14 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6E971CB424BD5D08005CCE14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6E971CB624BD5D0D005CCE14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6E971CB924BD5D0D005CCE14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6E971CBB24BD5D0D005CCE14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E971CBC24BD5D0D005CCE14 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +108,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E971CA524BD5D08005CCE14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E971CC124BD5E05005CCE14 /* DPProgressRing.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +124,7 @@
 			children = (
 				6E00828B24BC7F3F0015792A /* DPProgressRing */,
 				6E49CFEF24BC924B007FD0E5 /* DPProgressRingExample */,
+				6E971CA924BD5D08005CCE14 /* DPProgressRingExample-ObjC */,
 				6E00828A24BC7F3F0015792A /* Products */,
 				6E49D00224BC92FB007FD0E5 /* Frameworks */,
 			);
@@ -90,6 +135,7 @@
 			children = (
 				6E00828924BC7F3F0015792A /* DPProgressRing.framework */,
 				6E49CFEE24BC924B007FD0E5 /* DPProgressRingExample.app */,
+				6E971CA824BD5D08005CCE14 /* DPProgressRingExample-ObjC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,6 +176,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E971CA924BD5D08005CCE14 /* DPProgressRingExample-ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				6E971CAA24BD5D08005CCE14 /* AppDelegate.h */,
+				6E971CAB24BD5D08005CCE14 /* AppDelegate.m */,
+				6E971CB024BD5D08005CCE14 /* ViewController.h */,
+				6E971CB124BD5D08005CCE14 /* ViewController.m */,
+				6E971CB324BD5D08005CCE14 /* Main.storyboard */,
+				6E971CB624BD5D0D005CCE14 /* Assets.xcassets */,
+				6E971CB824BD5D0D005CCE14 /* LaunchScreen.storyboard */,
+				6E971CBB24BD5D0D005CCE14 /* Info.plist */,
+				6E971CBC24BD5D0D005CCE14 /* main.m */,
+			);
+			path = "DPProgressRingExample-ObjC";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +245,25 @@
 			productReference = 6E49CFEE24BC924B007FD0E5 /* DPProgressRingExample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6E971CA724BD5D08005CCE14 /* DPProgressRingExample-ObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E971CC024BD5D0D005CCE14 /* Build configuration list for PBXNativeTarget "DPProgressRingExample-ObjC" */;
+			buildPhases = (
+				6E971CA424BD5D08005CCE14 /* Sources */,
+				6E971CA524BD5D08005CCE14 /* Frameworks */,
+				6E971CA624BD5D08005CCE14 /* Resources */,
+				6E971CC524BD5E05005CCE14 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E971CC424BD5E05005CCE14 /* PBXTargetDependency */,
+			);
+			name = "DPProgressRingExample-ObjC";
+			productName = "DPProgressRingExample-ObjC";
+			productReference = 6E971CA824BD5D08005CCE14 /* DPProgressRingExample-ObjC.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -198,6 +279,9 @@
 						LastSwiftMigration = 1150;
 					};
 					6E49CFED24BC924B007FD0E5 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					6E971CA724BD5D08005CCE14 = {
 						CreatedOnToolsVersion = 11.5;
 					};
 				};
@@ -217,6 +301,7 @@
 			targets = (
 				6E00828824BC7F3F0015792A /* DPProgressRing */,
 				6E49CFED24BC924B007FD0E5 /* DPProgressRingExample */,
+				6E971CA724BD5D08005CCE14 /* DPProgressRingExample-ObjC */,
 			);
 		};
 /* End PBXProject section */
@@ -236,6 +321,16 @@
 				6E49CFFD24BC924E007FD0E5 /* LaunchScreen.storyboard in Resources */,
 				6E49CFFA24BC924E007FD0E5 /* Assets.xcassets in Resources */,
 				6E49CFF824BC924B007FD0E5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E971CA624BD5D08005CCE14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E971CBA24BD5D0D005CCE14 /* LaunchScreen.storyboard in Resources */,
+				6E971CB724BD5D0D005CCE14 /* Assets.xcassets in Resources */,
+				6E971CB524BD5D08005CCE14 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +354,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E971CA424BD5D08005CCE14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E971CB224BD5D08005CCE14 /* ViewController.m in Sources */,
+				6E971CAC24BD5D08005CCE14 /* AppDelegate.m in Sources */,
+				6E971CBD24BD5D0D005CCE14 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -266,6 +371,11 @@
 			isa = PBXTargetDependency;
 			target = 6E00828824BC7F3F0015792A /* DPProgressRing */;
 			targetProxy = 6E49D00524BC92FB007FD0E5 /* PBXContainerItemProxy */;
+		};
+		6E971CC424BD5E05005CCE14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E00828824BC7F3F0015792A /* DPProgressRing */;
+			targetProxy = 6E971CC324BD5E05005CCE14 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -282,6 +392,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				6E49CFFC24BC924E007FD0E5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6E971CB324BD5D08005CCE14 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E971CB424BD5D08005CCE14 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6E971CB824BD5D0D005CCE14 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E971CB924BD5D0D005CCE14 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -500,6 +626,42 @@
 			};
 			name = Release;
 		};
+		6E971CBE24BD5D0D005CCE14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MNYYTRW888;
+				INFOPLIST_FILE = "DPProgressRingExample-ObjC/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DP.iOS.Component.DPProgressRingExample-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6E971CBF24BD5D0D005CCE14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MNYYTRW888;
+				INFOPLIST_FILE = "DPProgressRingExample-ObjC/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "DP.iOS.Component.DPProgressRingExample-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -526,6 +688,15 @@
 			buildConfigurations = (
 				6E49CFFF24BC924E007FD0E5 /* Debug */,
 				6E49D00024BC924E007FD0E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E971CC024BD5D0D005CCE14 /* Build configuration list for PBXNativeTarget "DPProgressRingExample-ObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E971CBE24BD5D0D005CCE14 /* Debug */,
+				6E971CBF24BD5D0D005CCE14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

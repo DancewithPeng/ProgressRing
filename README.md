@@ -4,47 +4,40 @@
 
 进度环控件，用于表示进度
 
+可定制的功能属性有：
+
+- **maximum**：最大值
+- **minimum**：最小值
+- **progress**：进度
+- **isClockwise**：是否顺时针
+- **startAngleOffset**：环的开始角度的偏移
+
 可定制的外观属性有：
 
 - **width**：环的宽度
 - **progressColor**：进度环的颜色
 - **placeholderColor**：占位环的颜色
+- **cap**：环的帽檐
 
 ## 导入
 
 ```ruby
-pod 'DPMessageBus', '~> 1.0'
+pod 'DPProgressRing', '~> 1.0.0'
 ```
 
 
 
 ## 使用
 
-初始化
-
-```objective-c
-MBMessageBus *messageBus = [[MBMessageBus alloc] initWithName:@"MyMessageBus"];
+```swift
+let ring = ProgressRing(frame: CGRect(x: 100, y: 100, width: 200, height: 200))
+ring.progress = 0.4
 ```
 
-可以给**MBMessageBus**添加观察者，观察者这里使用了弱引用，添加后不需要手动移除。观察者需要遵循`MBMessageObserver`协议，用于处理收到的信息
+如果需要动画，使用以下方法进行更新进度
 
-```objective-c
-[messageBus addObserver:self];
-```
-
-通过总线发送消息
-
-```objective-c
-// 发送同步信息
-[messageBus sendMessage:@"MyMessage" withInfo:@{@"MyInfoKey": ...}];    
-
-// 发送异步信息
-[messageBus sendAsyncMessage:@"MyAsyncMessage" withInfo:@{@"MyInfoKey": ...} callback:^(NSDictionary<NSString *,id> * _Nonnull info) {
-  	NSLog(@"callbackInfo: %@", info);
-}];
-    
-// 发送广播信息
-[messageBus postMessage:@"MyPostMessage" withInfo:@{@"MyInfoKey": ...}];
+```swift
+ring.setProgress(0.4, animated: true)
 ```
 
 

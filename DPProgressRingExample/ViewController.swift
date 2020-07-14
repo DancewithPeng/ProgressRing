@@ -17,12 +17,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(ring)
-        ring.progress = 0.45
-        ring.backgroundColor = .gray
+        ring.progress         = 0.45
+        ring.isClockwise      = true
+        ring.startAngleOffset = -CGFloat.pi/2.0
+        
+        ring.placeholderColor = UIColor.lightGray
+        ring.progressColor    = UIColor.yellow
     }
     
     @IBAction func randomButtonDidTap(_ sender: Any) {
         ring.progress = Float.random(in: 0...1)
+    }
+    
+    @IBAction func animatedRandomButtonDidTap(_ sender: Any) {
+        ring.setProgress(Float.random(in: 0...1), animated: true)
     }
 }
 
